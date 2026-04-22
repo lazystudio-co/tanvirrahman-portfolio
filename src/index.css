@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-redd: #ff0000;
+  --font-satoshi: "Satoshi", sans-serif;
+  --font-patung: "Patung", sans-serif;
+  --font-anton: "Anton", sans-serif;
+}
+
+@font-face {
+  font-family: Satoshi;
+  src: url(./assets/fonts/Satoshi_Complete/Satoshi_Complete/Fonts/OTF/Satoshi-Medium.otf)
+    format("opentype");
+}
+
+@font-face {
+  font-family: Patung;
+  src: url(./assets/fonts/patung/patung/Patung/Patung.otf) format("opentype");
+}
+
+@font-face {
+  font-family: Anton;
+  src: url(./assets/fonts/Anton_Complete/Anton_Complete/Fonts/OTF/Anton-Regular.otf)
+    format("opentype");
+}
+
+body {
+  background: #000000;
+}
+
+
