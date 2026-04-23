@@ -71,7 +71,7 @@ const BlogCard = ({ post }) => {
 
 export default function BlogSection({ id }) {
   return (
-    <section id={id} className="w-full bg-black pt-10 pb-15">
+    <section id={id} className="w-full bg-black pt-20 pb-15">
       <Container>
         <div className=" 2xl:mb-14 xl:mb-14 lg:mb-10 md:mb-18 mb-8 relative flex justify-between items-end">
           <div className="relative">
