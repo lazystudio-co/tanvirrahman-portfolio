@@ -32,13 +32,13 @@ const ScrollToHash = () => {
   return (
     <button
       onClick={scrollToTop}
-      className={` fixed bottom-6 right-6 z-50 p-4 rounded-full bg-white text-redd transition-all duration-300 cursor-pointer select-none ${
+      className={` fixed bottom-6 right-6 z-50 2xl:p-4 xl:p-4 lg:p-4 md:p-4 p-2 rounded-full bg-white text-redd transition-all duration-300 cursor-pointer select-none ${
         show
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-10 pointer-events-none"
       }`}
     >
-      <FaArrowUp className=" text-xl " />
+      <FaArrowUp className=" 2xl:text-xl xl:text-xl lg:text-xl md:text-xl text-md " />
     </button>
   );
 };
