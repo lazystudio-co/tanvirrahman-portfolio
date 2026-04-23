@@ -29,7 +29,3 @@ body {
   overflow-x: hidden;
 }
 
-#mobilenav {
-  background: url(../public/images/nav.png) center no-repeat;
-  background-size: cover;
-}
