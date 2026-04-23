@@ -66,8 +66,9 @@ const Footer = () => {
             className="max-w-md"
           >
             <p className="text-gray-300 text-lg font-satoshi leading-snug tracking-tight 2xl:text-left xl:text-left lg:text-balance md:text-left sm:text-left text-center ">
-              At Drago studio™, we design digital experiences that captivate,
-              connect, and inspire.
+              Where every frame is shaped with intention, turning simple clips
+              into meaningful stories that inspire, engage, and bring ideas to
+              life with cinematic impact.
             </p>
           </motion.div>
         </header>

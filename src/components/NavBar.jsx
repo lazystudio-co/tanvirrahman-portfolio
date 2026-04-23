@@ -42,13 +42,32 @@ const NavBar = () => {
     setToogleMenu((prev) => !prev);
   };
 
+
+
+  // parahraph letter animate
+
+  
+  // parahraph letter animate
+
+
+
+
   return (
     <nav id="#" className=" bg-black z-50 relative">
       <Container
         className=" flex justify-between items-center z-50 bg-black 
       2xl:py-6 xl:py-6 lg:py-6 py-4 "
       >
-        <a
+        <motion.a
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.7,
+            delay: 0.2,
+            stiffness: 70,
+            type: "tween",
+          }}
+          viewport={{ once: true, amount: 0.3 }}
           href="/"
           onClick={handleLogoClick}
           className=" flex justify-center items-center gap-1 cursor-pointer "
@@ -58,9 +77,20 @@ const NavBar = () => {
             alt="logo"
             className=" 2xl:w-40 xl:w-40 lg:w-40 w-30 rounded-md select-none "
           />
-        </a>
+        </motion.a>
 
-        <div className=" flex justify-center items-center 2xl:gap-8 xl:gap-8 lg:gap-8 md:gap-6 gap-4 ">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.7,
+            delay: 0.2,
+            stiffness: 70,
+            type: "tween",
+          }}
+          viewport={{ once: true, amount: 0.3 }}
+          className=" flex justify-center items-center 2xl:gap-8 xl:gap-8 lg:gap-8 md:gap-6 gap-4 "
+        >
           <div className=" 2xl:block xl:block lg:block hidden ">
             <List>
               {linkPath.map((link) => (
@@ -84,7 +114,7 @@ const NavBar = () => {
           >
             <Menu className=" text-white " size={30} />
           </button>
-        </div>
+        </motion.div>
 
         <AnimatePresence>
           {toogleMenu && (

@@ -73,9 +73,10 @@ const About = ({ id }) => {
           <div className=" flex flex-col md:flex-row justify-center items-start gap-8 md:gap-12.5 ">
             <div>
               <p className=" font-satoshi w-full md:w-88.75 text-[16px] text-white ">
-                We are Drago — a creative agency dedicated to turning ideas into
-                reality. Our team strategists, designers, and developers work
-                together.
+                I am Tanvir — a creative video editor dedicated to turning raw
+                footage into powerful visual stories. I blend creativity,
+                timing, and emotion to craft edits that connect, engage, and
+                inspire.
               </p>
               <img
                 src="images/profile.jpeg"

@@ -2,7 +2,13 @@ import React from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { ScrollSmoother } from "gsap/all";
 
-const ListItems = ({ children, className = "", PagePath, activeBg, onClose }) => {
+const ListItems = ({
+  children,
+  className = "",
+  PagePath,
+  activeBg,
+  onClose,
+}) => {
   const location = useLocation();
   const navigate = useNavigate();
 
