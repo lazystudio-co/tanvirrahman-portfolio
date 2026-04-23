@@ -56,7 +56,7 @@ const NavBar = () => {
           <img
             src="images/logo.png"
             alt="logo"
-            className=" 2xl:w-40 xl:w-40 lg:w-40 md:w-30 w-20 rounded-md select-none "
+            className=" 2xl:w-40 xl:w-40 lg:w-40 w-30 rounded-md select-none "
           />
         </a>
 
@@ -82,7 +82,7 @@ const NavBar = () => {
             onClick={handleToogleMenu}
             className=" 2xl:hidden xl:hidden lg:hidden block "
           >
-            <Menu className=" text-white " size={20} />
+            <Menu className=" text-white " size={30} />
           </button>
         </div>
 
