@@ -14,16 +14,19 @@ const ProjectContents = () => {
     if (!video) return;
 
     if (playingIndex === index) {
-      // Clicking the active video → mute it, deactivate
-      video.muted = true;
+      // Clicking the active video → pause it
+      video.pause();
       setPlayingIndex(null);
     } else {
-      // Mute all other videos
+      // Pause all other videos
       videoRefs.current.forEach((v, i) => {
-        if (v && i !== index) v.muted = true;
+        if (v && i !== index) {
+          v.pause();
+        }
       });
-      // Unmute the clicked one
+      // Unmute and play the clicked one
       video.muted = false;
+      video.play().catch(() => {});
       setPlayingIndex(index);
     }
   };
@@ -58,9 +61,10 @@ const ProjectContents = () => {
     });
   }, []);
 
+
+
   return (
     <div className="mt-10 space-y-16">
-
       {/* ── Films & Ads ── */}
       <div>
         {/* Section label */}
@@ -83,8 +87,7 @@ const ProjectContents = () => {
               >
                 <video
                   playsInline
-                  autoPlay
-                  muted
+                  preload="metadata"
                   loading="lazy"
                   ref={(el) => (videoRefs.current[i] = el)}
                   loop
@@ -110,7 +113,11 @@ const ProjectContents = () => {
                         group-hover:opacity-100 group-hover:scale-100
                         transition-all duration-300"
                     >
-                      <Play size={22} className="text-white ml-1" fill="white" />
+                      <Play
+                        size={22}
+                        className="text-white ml-1"
+                        fill="white"
+                      />
                     </div>
                   )}
                 </div>
@@ -143,8 +150,7 @@ const ProjectContents = () => {
               >
                 <video
                   playsInline
-                  autoPlay
-                  muted
+                  preload="metadata"
                   loading="lazy"
                   ref={(el) => (videoRefs.current[globalIndex] = el)}
                   loop
@@ -170,7 +176,11 @@ const ProjectContents = () => {
                         group-hover:opacity-100 group-hover:scale-100
                         transition-all duration-300"
                     >
-                      <Play size={16} className="text-white ml-0.5" fill="white" />
+                      <Play
+                        size={16}
+                        className="text-white ml-0.5"
+                        fill="white"
+                      />
                     </div>
                   )}
                 </div>
@@ -179,7 +189,6 @@ const ProjectContents = () => {
           })}
         </div>
       </div>
-
     </div>
   );
 };

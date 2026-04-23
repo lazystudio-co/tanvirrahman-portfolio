@@ -5,7 +5,10 @@ import Container from "../components/Container";
 
 const About = ({ id }) => {
   return (
-    <section id={id} className=" select-none 2xl:pt-10 xl:pt-10 lg:pt-5 md:pt-0 sm:pt-0 pt-0 2xl:pb-15 xl:pb-15 lg:pb-15 md:pb-10 pb-0 ">
+    <section
+      id={id}
+      className=" select-none 2xl:pt-10 xl:pt-10 lg:pt-5 md:pt-0 sm:pt-0 pt-0 2xl:pb-15 xl:pb-15 lg:pb-15 md:pb-10 pb-0 "
+    >
       <Container>
         <div className=" relative">
           <h2 className=" font-anton text-white text-[22px] sm:text-[28px] md:text-[34px] lg:text-[40px] w-full lg:w-[70%] leading-tight ">
@@ -21,13 +24,13 @@ const About = ({ id }) => {
           </p>
         </div>
 
-        <div className=" flex flex-col lg:flex-row justify-between items-start 2xl:mt-20 xl:mt-20 lg:mt-20 md:mt-16 mt-10 2xl:gap-12 lg:gap-16 md:gap-5 sm:gap-10 gap-4 ">
+        <div className=" flex flex-col lg:flex-row justify-between items-start 2xl:mt-20 xl:mt-20 lg:mt-20 md:mt-12 mt-8 2xl:gap-12 lg:gap-16 md:gap-5 sm:gap-10 gap-4 ">
           <div className=" select-text selection:bg-white selection:text-black ">
             <div>
               <b className=" font-patung font-bold text-[32px] text-white tracking-wide w-fit ">
                 Contacts
               </b>
-              <p className=" text-[16px] text-white font-satoshi mt-5 select-text!  ">
+              <p className=" text-[16px] text-white font-satoshi 2xl:mt-5 xl:mt-5 lg:mt-5 md:mt-5 mt-2 select-text!  ">
                 +880 1735 035182
               </p>
               <p className=" text-[16px] text-white font-satoshi mt-1 select-text!  ">
@@ -39,7 +42,7 @@ const About = ({ id }) => {
               <b className=" font-patung font-bold text-[32px] text-white tracking-wide w-fit  ">
                 Tools
               </b>
-              <ul className=" mt-5 flex justify-start items-center gap-2 select-none ">
+              <ul className=" 2xl:mt-5 xl:mt-5 lg:mt-5 md:mt-5 mt-2 flex justify-start items-center gap-2 select-none ">
                 <li>
                   <img src="icons/premiere-pro.png" className=" w-15 " />
                 </li>
@@ -59,7 +62,7 @@ const About = ({ id }) => {
               <a
                 href="images/logo.png"
                 download="Tanvir Rahman (Visual Storyteller)"
-                className="bg-white w-fit px-4 py-1 rounded-md text-[16px] text-black text-center font- font-bold mt-5 select-none  "
+                className="bg-white w-fit px-4 py-1 rounded-md text-[16px] text-black text-center font- font-bold 2xl:mt-5 xl:mt-5 lg:mt-5 md:mt-5 mt-2 select-none  "
                 target="_blank"
               >
                 Download
@@ -80,22 +83,25 @@ const About = ({ id }) => {
                 className=" w-full md:w-85 mt-10 rounded-[20px] "
               />
             </div>
-            <List className=" flex flex-col justify-start items-start ">
-              <ListItems className=" text-[16px] flex justify-center items-center gap-2 py-6 ">
-                <img src="images/homeVec.png" /> Brand Strategy and Identity
+            <List className=" flex flex-col justify-start items-start 2xl:gap-0 xl:gap-0 lg:gap-1 md:gap-1 gap-0 ">
+              <ListItems className=" text-[16px] flex justify-center items-center gap-2 2xl:py-6 xl:py-6 lg:py-6 md:py-6 py-1 ">
+                <img src="images/homeVec.png" /> Crafting Stories Through
+                Editing
               </ListItems>
-              <ListItems className=" text-[16px] flex justify-center items-center gap-2 py-6 ">
-                <img src="images/aboutVec.png" /> UI/UX and Web Design
+              <ListItems className=" text-[16px] flex justify-center items-center gap-2 2xl:py-6 xl:py-6 lg:py-6 md:py-6 py-1 ">
+                <img src="images/aboutVec.png" /> Turning Clips Into Cinematic
+                Stories
               </ListItems>
-              <ListItems className=" text-[16px] flex justify-center items-center gap-2 py-6 ">
-                <img src="images/projectVec.png" /> Web and App Development
+              <ListItems className=" text-[16px] flex justify-center items-center gap-2 2xl:py-6 xl:py-6 lg:py-6 md:py-6 py-1 ">
+                <img src="images/projectVec.png" /> Editing Vision Into Reality
               </ListItems>
-              <ListItems className=" text-[16px] flex justify-center items-center gap-2 py-6 ">
-                <img src="images/blogVec.png" /> eCommerce Solutions
+              <ListItems className=" text-[16px] flex justify-center items-center gap-2 2xl:py-6 xl:py-6 lg:py-6 md:py-6 py-1 ">
+                <img src="images/blogVec.png" /> Creating Impactful Visual
+                Experiences
               </ListItems>
-              <ListItems className=" text-[16px] flex justify-center items-center gap-2 py-6 ">
-                <img src="images/homeVec.png" className=" rotate-180 " />{" "}
-                Digital Marketing and SEO
+              <ListItems className=" text-[16px] flex justify-center items-center gap-2 2xl:py-6 xl:py-6 lg:py-6 md:py-6 py-1 ">
+                <img src="images/homeVec.png" className=" rotate-180 " />
+                Shaping Moments With Precision
               </ListItems>
             </List>
           </div>

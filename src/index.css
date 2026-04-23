@@ -29,3 +29,19 @@ body {
   overflow-x: hidden;
 }
 
+/* Promote scroll content to its own GPU layer for smoother compositing */
+#smoothContent {
+  will-change: transform;
+}
+
+/* Ensure images and videos don't cause layout shifts */
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+/* Promote scroll content to its own GPU layer for smoother compositing */
+#smoothContent {
+  will-change: transform;
+}
+

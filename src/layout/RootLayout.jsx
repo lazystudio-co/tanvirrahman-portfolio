@@ -14,13 +14,15 @@ export default function RootLayout() {
       window.history.scrollRestoration = "manual";
     }
 
+    const isMobile = window.innerWidth < 1024;
+
     const ctx = gsap.context(() => {
       ScrollSmoother.create({
         wrapper: "#smoothWrapper",
         content: "#smoothContent",
-        smooth: 1.5,
-        effects: true,
-        normalizeScroll: true,
+        smooth: isMobile ? 0 : 1.5,
+        effects: false,
+        normalizeScroll: !isMobile,
         wholePixels: true,
       });
 

@@ -23,7 +23,7 @@ export default function Contact({ id }) {
   return (
     <div
       id={id}
-      className=" 2xl:my-20 xl:my-0 lg:my-20 md:my-0 my-4 2xl:pt-20 xl:pt-20 lg:pt-0 md:pt-10 pt-0 text-white selection:bg-red-600 selection:text-white font-sans overflow-x-hidden"
+      className=" 2xl:my-20 xl:my-0 lg:my-20 md:my-10 my-10 2xl:pt-20 xl:pt-20 lg:pt-0 md:pt-10 pt-0 text-white selection:bg-red-600 selection:text-white font-sans overflow-x-hidden"
     >
       <Container className="  ">
         <div className="relative mb-10 md:mb-10 lg:mb-32 xl:mb-32 2xl:mb-32 text-center">
