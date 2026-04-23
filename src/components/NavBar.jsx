@@ -67,6 +67,7 @@ const NavBar = () => {
           <img
             src="images/logo.png"
             alt="logo"
+            loading="eager"
             className=" 2xl:w-40 xl:w-40 lg:w-40 w-30 rounded-md select-none "
           />
         </motion.a>

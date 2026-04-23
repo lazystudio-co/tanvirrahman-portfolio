@@ -138,6 +138,7 @@ const Landing = ({ id }) => {
           className=" mb-25 "
         >
           <img
+            loading="eager"
             src="images/heroimage.jpg"
             className=" rounded-[20px] select-none "
           />
