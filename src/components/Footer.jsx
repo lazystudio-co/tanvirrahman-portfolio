@@ -114,7 +114,7 @@ const Footer = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ amount: 0.3 }}
-            className="text-[285px] font-anton leading-[0.85] tracking-tight text-center flex justify-center whitespace-nowrap uppercase "
+            className="text-[60px] sm:text-[100px] md:text-[140px] lg:text-[180px] xl:text-[240px] 2xl:text-[285px] font-anton leading-[0.85] tracking-tight text-center flex justify-center whitespace-nowrap uppercase "
           >
             Tanvir Rahman
           </motion.h1>
@@ -124,7 +124,7 @@ const Footer = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
             viewport={{ amount: 0.3 }}
-            className="absolute -bottom-25 right-75 pointer-events-none text-[140px] text-redd font-patung italic "
+            className="absolute -bottom-6 sm:-bottom-10 md:-bottom-14 lg:-bottom-18 xl:-bottom-22 2xl:-bottom-25 right-0 sm:right-10 md:right-20 lg:right-40 xl:right-60 2xl:right-75 pointer-events-none text-[28px] sm:text-[50px] md:text-[70px] lg:text-[90px] xl:text-[120px] 2xl:text-[140px] text-redd font-patung italic "
           >
             Video Editor
           </motion.p>

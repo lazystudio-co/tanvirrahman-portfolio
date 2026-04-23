@@ -38,7 +38,6 @@ const BLOG_POSTS = [
 const BlogCard = ({ post }) => {
   return (
     <article className="group cursor-pointer flex flex-col gap-4">
-      {/* Image Container with Hover Effect */}
       <div className="relative w-full aspect-video overflow-hidden rounded-sm bg-neutral-900">
         <img
           src={post.image}
@@ -74,7 +73,7 @@ export default function BlogSection({ id }) {
   return (
     <section id={id} className="w-full bg-black pt-10 pb-15">
       <Container>
-        <div className="mb-16 md:mb-24 relative flex justify-between items-end">
+        <div className=" 2xl:mb-14 xl:mb-14 lg:mb-10 md:mb-18 mb-8 relative flex justify-between items-end">
           <div className="relative">
             <h2 className="text-white text-[56px] font-anton uppercase">
               Latest

@@ -26,6 +26,10 @@
 
 body {
   background: #000000;
+  overflow-x: hidden;
 }
 
-
+#mobilenav {
+  background: url(../public/images/nav.png) center no-repeat;
+  background-size: cover;
+}

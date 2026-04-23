@@ -23,15 +23,15 @@ export default function Contact({ id }) {
   return (
     <div
       id={id}
-      className=" my-20 pt-10 text-white selection:bg-red-600 selection:text-white font-sans overflow-x-hidden"
+      className=" 2xl:my-20 xl:my-0 lg:my-20 md:my-0 my-4 2xl:pt-20 xl:pt-20 lg:pt-0 md:pt-10 pt-0 text-white selection:bg-red-600 selection:text-white font-sans overflow-x-hidden"
     >
       <Container className="  ">
-        <div className="relative mb-20 lg:mb-32 text-center">
+        <div className="relative mb-10 md:mb-10 lg:mb-32 xl:mb-32 2xl:mb-32 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-[12vw] lg:text-[180px] font-anton tracking-tight leading-none text-white uppercase select-none opacity-90"
+            className="2xl:text-[12vw] xl:text-[12vw] lg:text-[180px] md:text-[110px] sm:text-[80px] text-[60px] font-anton tracking-tight leading-none text-white uppercase select-none opacity-90"
           >
             CONTACT
           </motion.h1>
@@ -39,7 +39,7 @@ export default function Contact({ id }) {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 1, type: "spring" }}
-            className="absolute top-0 left-[50%] translate-x-[-50%] text-[200px] font-patung text-red-600 z-10 "
+            className="absolute 2xl:top-0 xl:top-6 lg:top-14 md:top-1 sm:top-4 top-2 left-[50%] translate-x-[-50%] 2xl:text-[12vw] xl:text-[12vw] lg:text-[14vw] md:text-[16vw] sm:text-[14vw] text-[14vw] font-patung text-red-600 z-10 whitespace-nowrap"
           >
             connect
           </motion.span>
@@ -66,7 +66,7 @@ export default function Contact({ id }) {
                 Contact Details
               </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 2xl:gap-10 xl:gap-10 lg:gap-10 md:gap-8 gap-6 ">
                 <div className="space-y-2">
                   <p className="text-xs uppercase tracking-widest text-gray-500 font-satoshi">
                     Phone/WhatsApp:

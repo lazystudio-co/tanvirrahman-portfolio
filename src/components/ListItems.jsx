@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { ScrollSmoother } from "gsap/all";
 
-const ListItems = ({ children, className = "", PagePath, activeBg }) => {
+const ListItems = ({ children, className = "", PagePath, activeBg, onClose }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -18,6 +18,8 @@ const ListItems = ({ children, className = "", PagePath, activeBg }) => {
     const handleClick = (e) => {
       e.preventDefault();
       navigate(pathPart);
+
+      if (onClose) onClose();
 
       const smoother = ScrollSmoother.get();
       setTimeout(() => {

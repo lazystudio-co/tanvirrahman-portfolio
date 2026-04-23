@@ -1,9 +1,13 @@
-import React, { useRef, useState } from "react";
-import { FaCirclePlay } from "react-icons/fa6";
+import React, { useEffect, useRef, useState } from "react";
+import { db } from "../../firebaseConfig";
+import { onValue, ref } from "firebase/database";
+import { Play } from "lucide-react";
 
 const ProjectContents = () => {
   const videoRefs = useRef([]);
   const [playingIndex, setPlayingIndex] = useState(null);
+  const [videos, setVideos] = useState([]);
+  const [reels, setReels] = useState([]);
 
   const handleClick = (index) => {
     const video = videoRefs.current[index];
@@ -20,229 +24,154 @@ const ProjectContents = () => {
     }
   };
 
+  useEffect(() => {
+    const videosRef = ref(db, "videos");
+    onValue(videosRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const videoList = Object.entries(data).map(([key, value]) => ({
+          id: key,
+          ...value,
+        }));
+        setVideos(videoList);
+      } else {
+        setVideos([]);
+      }
+    });
+
+    const reelsRef = ref(db, "reels");
+    onValue(reelsRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const reelList = Object.entries(data).map(([key, value]) => ({
+          id: key,
+          ...value,
+        }));
+        setReels(reelList);
+      } else {
+        setReels([]);
+      }
+    });
+  }, []);
+
   return (
-    <div className=" mt-15">
-      <div className="flex flex-row gap-6 mt-10 ">
-        <div className="flex flex-row gap-6">
-          <div className="relative">
-            <video
-              playsInline
-              loading="lazy"
-              ref={(el) => (videoRefs.current[3] = el)}
-              loop
-              className={` ${playingIndex === 3 ? " grayscale-0! " : ""} grayscale-100  w-full cursor-pointer select-none`}
-              src="reel/r2.mp4"
-              onClick={() => handleClick(3)}
-            />
-            <div
-              className={`absolute inset-0 flex flex-col justify-start items-start pointer-events-none text-white text-[20px] bg-black/70 p-8 ${playingIndex === 3 ? "hidden" : ""}`}
-            >
-              <b className=" text-lg mb-4 ">Title</b>
-              <p className=" text-sm ">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-                delectus nihil, dignissimos repellat, fuga ipsum inventore
-                laborum ea corrupti debitis consectetur, mollitia dolor
-                architecto cum perferendis rerum. Deserunt quo asperiores sunt
-                dolorum saepe vitae ad aliquid animi laborum omnis culpa minus
-                non dolore optio, tempore mollitia delectus dolores maxime
-                consequatur.
-              </p>
-            </div>
-            <div
-              className={` ${playingIndex === 3 ? "hidden" : ""}  text-[24px] font-bold text-redd font-patung absolute right-4 bottom-4 `}
-            >
-              Click to play
-            </div>
-          </div>
+    <div className="mt-10 space-y-16">
 
-          <div className="relative">
-            <video
-              playsInline
-              loading="lazy"
-              ref={(el) => (videoRefs.current[4] = el)}
-              loop
-              className={` ${playingIndex === 4 ? " grayscale-0! " : ""} grayscale-100  w-full cursor-pointer select-none`}
-              src="reel/r2.mp4"
-              onClick={() => handleClick(4)}
-            />
-            <div
-              className={`absolute inset-0 flex flex-col justify-start items-start pointer-events-none text-white text-[20px] bg-black/70 p-8 ${playingIndex === 4 ? "hidden" : ""}`}
-            >
-              <b className=" text-lg mb-4 ">Title</b>
-              <p className=" text-sm ">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-                delectus nihil, dignissimos repellat, fuga ipsum inventore
-                laborum ea corrupti debitis consectetur, mollitia dolor
-                architecto cum perferendis rerum. Deserunt quo asperiores sunt
-                dolorum saepe vitae ad aliquid animi laborum omnis culpa minus
-                non dolore optio, tempore mollitia delectus dolores maxime
-                consequatur.
-              </p>
-            </div>
-            <div
-              className={` ${playingIndex === 4 ? "hidden" : ""}  text-[24px] font-bold text-redd font-patung absolute right-4 bottom-4 `}
-            >
-              Click to play
-            </div>
-          </div>
+      {/* ── Films & Ads ── */}
+      <div>
+        {/* Section label */}
+        <div className="flex items-center gap-4 mb-8">
+          <span className="text-white/50 font-satoshi text-xs tracking-[0.35em] uppercase shrink-0">
+            Films &amp; Ads
+          </span>
+          <div className="flex-1 h-px bg-white/10" />
         </div>
 
-        <div className="flex flex-row gap-6 ">
-          <div className="relative">
-            <video
-              playsInline
-              loading="lazy"
-              ref={(el) => (videoRefs.current[5] = el)}
-              loop
-              className={` ${playingIndex === 5 ? " grayscale-0! " : ""} grayscale-100  w-full cursor-pointer select-none`}
-              src="reel/r2.mp4"
-              onClick={() => handleClick(5)}
-            />
-            <div
-              className={`absolute inset-0 flex flex-col justify-start items-start pointer-events-none text-white text-[20px] bg-black/70 p-8 ${playingIndex === 5 ? "hidden" : ""}`}
-            >
-              <b className=" text-lg mb-4 ">Title</b>
-              <p className=" text-sm ">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-                delectus nihil, dignissimos repellat, fuga ipsum inventore
-                laborum ea corrupti debitis consectetur, mollitia dolor
-                architecto cum perferendis rerum. Deserunt quo asperiores sunt
-                dolorum saepe vitae ad aliquid animi laborum omnis culpa minus
-                non dolore optio, tempore mollitia delectus dolores maxime
-                consequatur.
-              </p>
-            </div>
-            <div
-              className={` ${playingIndex === 5 ? "hidden" : ""}  text-[24px] font-bold text-redd font-patung absolute right-4 bottom-4 `}
-            >
-              Click to play
-            </div>
-          </div>
+        {/* Responsive grid: 1 col → 2 col (md) → 3 col (lg+) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {videos.slice(0, 3).map((video, i) => {
+            const isPlaying = playingIndex === i;
+            return (
+              <div
+                key={video.id}
+                className="relative group overflow-hidden cursor-pointer"
+                onClick={() => handleClick(i)}
+              >
+                <video
+                  playsInline
+                  loading="lazy"
+                  ref={(el) => (videoRefs.current[i] = el)}
+                  loop
+                  className={`w-full object-cover select-none transition-all duration-500 ${
+                    isPlaying ? "grayscale-0" : "grayscale-100"
+                  }`}
+                  src={video.videoUrl}
+                />
 
-          <div className="relative">
-            <video
-              playsInline
-              loading="lazy"
-              ref={(el) => (videoRefs.current[6] = el)}
-              loop
-              className={` ${playingIndex === 6 ? " grayscale-0! " : ""} grayscale-100  w-full cursor-pointer select-none`}
-              src="reel/r2.mp4"
-              onClick={() => handleClick(6)}
-            />
-            <div
-              className={`absolute inset-0 flex flex-col justify-start items-start pointer-events-none text-white text-[20px] bg-black/70 p-8 ${playingIndex === 6 ? "hidden" : ""}`}
-            >
-              <b className=" text-lg mb-4 ">Title</b>
-              <p className=" text-sm ">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-                delectus nihil, dignissimos repellat, fuga ipsum inventore
-                laborum ea corrupti debitis consectetur, mollitia dolor
-                architecto cum perferendis rerum. Deserunt quo asperiores sunt
-                dolorum saepe vitae ad aliquid animi laborum omnis culpa minus
-                non dolore optio, tempore mollitia delectus dolores maxime
-                consequatur.
-              </p>
-            </div>
-            <div
-              className={` ${playingIndex === 6 ? "hidden" : ""}  text-[24px] font-bold text-redd font-patung absolute right-4 bottom-4 `}
-            >
-              Click to play
-            </div>
-          </div>
+                {/* Dark overlay + play button */}
+                <div
+                  className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
+                    isPlaying
+                      ? "bg-transparent"
+                      : "bg-black/25 group-hover:bg-black/10"
+                  }`}
+                >
+                  {!isPlaying && (
+                    <div
+                      className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/30
+                        flex items-center justify-center
+                        opacity-0 scale-75
+                        group-hover:opacity-100 group-hover:scale-100
+                        transition-all duration-300"
+                    >
+                      <Play size={22} className="text-white ml-1" fill="white" />
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
-      <div className="flex flex-row gap-6 mt-6 ">
-        <div className="relative">
-          <video
-            playsInline
-            loading="lazy"
-            ref={(el) => (videoRefs.current[0] = el)}
-            loop
-            className={` ${playingIndex === 0 ? " grayscale-0! " : ""} grayscale-100  w-full cursor-pointer select-none`}
-            src="video/v2.mp4"
-            onClick={() => handleClick(0)}
-          />
-          <div
-            className={`absolute inset-0 flex flex-col justify-start items-start pointer-events-none text-white text-[20px] bg-black/70 p-8 ${playingIndex === 0 ? "hidden" : ""}`}
-          >
-            <b className=" text-lg mb-4 ">Title</b>
-            <p className=" text-sm ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-              delectus nihil, dignissimos repellat, fuga ipsum inventore laborum
-              ea corrupti debitis consectetur, mollitia dolor architecto cum
-              perferendis rerum. Deserunt quo asperiores sunt dolorum saepe
-              vitae ad aliquid animi laborum omnis culpa minus non dolore optio,
-              tempore mollitia delectus dolores maxime consequatur.
-            </p>
-          </div>
-          <div
-            className={` ${playingIndex === 0 ? "hidden" : ""}  text-[24px] font-bold text-redd font-patung absolute right-4 bottom-4 `}
-          >
-            Click to play
-          </div>
+      {/* ── Reels ── */}
+      <div>
+        {/* Section label */}
+        <div className="flex items-center gap-4 mb-8">
+          <span className="text-white/50 font-satoshi text-xs tracking-[0.35em] uppercase shrink-0">
+            Reels
+          </span>
+          <div className="flex-1 h-px bg-white/10" />
         </div>
 
-        <div className="relative">
-          <video
-            playsInline
-            loading="lazy"
-            ref={(el) => (videoRefs.current[1] = el)}
-            loop
-            className={` ${playingIndex === 1 ? " grayscale-0! " : ""} grayscale-100  w-full cursor-pointer select-none`}
-            src="video/v2.mp4"
-            onClick={() => handleClick(1)}
-          />
-          <div
-            className={`absolute inset-0 flex flex-col justify-start items-start pointer-events-none text-white text-[20px] bg-black/70 p-8 ${playingIndex === 1 ? "hidden" : ""}`}
-          >
-            <b className=" text-lg mb-4 ">Title</b>
-            <p className=" text-sm ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-              delectus nihil, dignissimos repellat, fuga ipsum inventore laborum
-              ea corrupti debitis consectetur, mollitia dolor architecto cum
-              perferendis rerum. Deserunt quo asperiores sunt dolorum saepe
-              vitae ad aliquid animi laborum omnis culpa minus non dolore optio,
-              tempore mollitia delectus dolores maxime consequatur.
-            </p>
-          </div>
-          <div
-            className={` ${playingIndex === 1 ? "hidden" : ""}  text-[24px] font-bold text-redd font-patung absolute right-4 bottom-4 `}
-          >
-            Click to play
-          </div>
-        </div>
+        {/* Responsive grid: 2 col (sm) → 3 col (md) → 4 col (lg) → 5 col (xl) → 6 col (2xl) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3">
+          {reels.slice(0, 6).map((reel, i) => {
+            const globalIndex = i + 3; // reels start at index 3 (after 3 videos)
+            const isPlaying = playingIndex === globalIndex;
+            return (
+              <div
+                key={reel.id}
+                className="relative group overflow-hidden cursor-pointer aspect-[9/16]"
+                onClick={() => handleClick(globalIndex)}
+              >
+                <video
+                  playsInline
+                  loading="lazy"
+                  ref={(el) => (videoRefs.current[globalIndex] = el)}
+                  loop
+                  className={`w-full h-full object-cover select-none transition-all duration-500 ${
+                    isPlaying ? "grayscale-0" : "grayscale-100"
+                  }`}
+                  src={reel.videoUrl}
+                />
 
-        <div className="relative">
-          <video
-            playsInline
-            loading="lazy"
-            ref={(el) => (videoRefs.current[2] = el)}
-            loop
-            className={` ${playingIndex === 2 ? " grayscale-0! " : ""} grayscale-100  w-full cursor-pointer select-none`}
-            src="video/v2.mp4"
-            onClick={() => handleClick(2)}
-          />
-          <div
-            className={`absolute inset-0 flex flex-col justify-start items-start pointer-events-none text-white text-[20px] bg-black/70 p-8 ${playingIndex === 2 ? "hidden" : ""}`}
-          >
-            <b className=" text-lg mb-4 ">Title</b>
-            <p className=" text-sm ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-              delectus nihil, dignissimos repellat, fuga ipsum inventore laborum
-              ea corrupti debitis consectetur, mollitia dolor architecto cum
-              perferendis rerum. Deserunt quo asperiores sunt dolorum saepe
-              vitae ad aliquid animi laborum omnis culpa minus non dolore optio,
-              tempore mollitia delectus dolores maxime consequatur.
-            </p>
-          </div>
-          <div
-            className={` ${playingIndex === 2 ? "hidden" : ""}  text-[24px] font-bold text-redd font-patung absolute right-4 bottom-4 `}
-          >
-            Click to play
-          </div>
+                {/* Dark overlay + play button */}
+                <div
+                  className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
+                    isPlaying
+                      ? "bg-transparent"
+                      : "bg-black/25 group-hover:bg-black/10"
+                  }`}
+                >
+                  {!isPlaying && (
+                    <div
+                      className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/30
+                        flex items-center justify-center
+                        opacity-0 scale-75
+                        group-hover:opacity-100 group-hover:scale-100
+                        transition-all duration-300"
+                    >
+                      <Play size={16} className="text-white ml-0.5" fill="white" />
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
+
     </div>
   );
 };

@@ -19,8 +19,10 @@ const ContactBTN = ({ children, className }) => {
     <a
       href="/"
       onClick={handleClick}
-      className={`  text-black font-patung text-[28px] px-6 py-1 bg-white border border-white rounded-full select-none cursor-pointer
-     hover:bg-transparent hover:text-white ${className} `}
+      className={`  text-black font-patung 2xl:text-[28px] xl:text-[28px] lg:text-[24px] md:text-[20px] text-[18px] 
+        px-6 2xl:py-1 xl:py-1 lg:py-1 md:py-1 py-0.5
+      bg-white border border-white rounded-full select-none cursor-pointer
+        hover:bg-transparent hover:text-white ${className} `}
     >
       {children}
     </a>

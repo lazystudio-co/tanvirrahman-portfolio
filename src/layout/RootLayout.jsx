@@ -1,14 +1,46 @@
-import React from "react";
+import React, { useLayoutEffect, useEffect } from "react";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import { Outlet } from "react-router-dom";
+import { ScrollSmoother, ScrollTrigger } from "gsap/all";
+import gsap from "gsap";
+
+gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 
 export default function RootLayout() {
+  useLayoutEffect(() => {
+    // Prevent browser's automatic scroll restoration
+    if (window.history.scrollRestoration) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    const ctx = gsap.context(() => {
+      ScrollSmoother.create({
+        wrapper: "#smoothWrapper",
+        content: "#smoothContent",
+        smooth: 1.5,
+        effects: true,
+        normalizeScroll: true,
+        wholePixels: true,
+      });
+
+      ScrollTrigger.refresh();
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    ScrollTrigger.refresh();
+  }, []);
+
   return (
-    <>
-      <NavBar />
-      <Outlet />
-      <Footer />
-    </>
+    <div id="smoothWrapper">
+      <div id="smoothContent">
+        <NavBar />
+        <Outlet />
+        <Footer />
+      </div>
+    </div>
   );
 }

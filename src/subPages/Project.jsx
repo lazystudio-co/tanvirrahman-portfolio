@@ -4,7 +4,10 @@ import ProjectContents from "../components/ProjectContents";
 
 const Project = ({ id }) => {
   return (
-    <section id={id} className=" pt-10 pb-15 ">
+    <section
+      id={id}
+      className=" 2xl:pt-10 xl:pt-10 lg:pt-10 md:pt-8 pt-2 pb-15 "
+    >
       <Container>
         <h2 className=" w-fit text-white font-anton text-[56px] uppercase relative">
           Proects
