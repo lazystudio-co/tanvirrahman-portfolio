@@ -126,7 +126,7 @@ const NavBar = () => {
               <List className="flex justify-start items-start gap-6 mt-5 ">
                 {linkPath.map((link) => (
                   <ListItems
-                    className=" md:text-2xl! text-sm! text-black! bg-white md:px-5 px-3 md:py-2 py-1 rounded-full "
+                    className=" md:text-2xl! text-sm! text-black! bg-white md:px-5 px-4 md:py-2 py-1 rounded-full "
                     key={link.path}
                     PagePath={link.path}
                     activeBg={link.bg}
