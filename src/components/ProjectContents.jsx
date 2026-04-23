@@ -82,7 +82,7 @@ const ProjectContents = () => {
             return (
               <div
                 key={video.id}
-                className="relative group overflow-hidden cursor-pointer"
+                className="relative group overflow-hidden cursor-pointer bg-[#111] aspect-video rounded-sm"
                 onClick={() => handleClick(i)}
               >
                 <video
@@ -109,8 +109,7 @@ const ProjectContents = () => {
                     <div
                       className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/30
                         flex items-center justify-center
-                        opacity-0 scale-75
-                        group-hover:opacity-100 group-hover:scale-100
+                        opacity-100 scale-100
                         transition-all duration-300"
                     >
                       <Play
@@ -145,7 +144,7 @@ const ProjectContents = () => {
             return (
               <div
                 key={reel.id}
-                className="relative group overflow-hidden cursor-pointer aspect-[9/16]"
+                className="relative group overflow-hidden cursor-pointer bg-[#111] aspect-[9/16] rounded-sm"
                 onClick={() => handleClick(globalIndex)}
               >
                 <video
@@ -172,8 +171,7 @@ const ProjectContents = () => {
                     <div
                       className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/30
                         flex items-center justify-center
-                        opacity-0 scale-75
-                        group-hover:opacity-100 group-hover:scale-100
+                        opacity-100 scale-100
                         transition-all duration-300"
                     >
                       <Play
