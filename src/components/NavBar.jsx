@@ -5,7 +5,7 @@ import ListItems from "./ListItems";
 import ContactBTN from "./ContactBTN";
 import { useNavigate } from "react-router-dom";
 import { ScrollSmoother } from "gsap/all";
-import { motion, AnimatePresence, easeOut } from "framer-motion";
+import { motion, AnimatePresence, easeOut, easeInOut } from "framer-motion";
 import { Menu } from "lucide-react";
 
 const NavBar = () => {
@@ -93,10 +93,9 @@ const NavBar = () => {
               animate={{ y: 0 }}
               exit={{ y: "-100%" }}
               transition={{
-                type: "spring",
-                stiffness: 70,
                 duration: 0.3,
-                ease: easeOut,
+                ease: easeInOut,
+                damping: 15,
               }}
               className=" bg-black absolute left-0 md:top-18 top-16 w-full md:px-12 px-6 py-5 -z-20 "
             >
