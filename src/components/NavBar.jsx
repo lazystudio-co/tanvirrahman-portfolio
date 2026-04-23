@@ -93,7 +93,7 @@ const NavBar = () => {
               animate={{ y: 0 }}
               exit={{ y: "-100%" }}
               transition={{ type: "spring", stiffness: 70, damping: 14 }}
-              className=" bg-black absolute left-0 md:top-18 top-16 bg-white w-full md:px-12 px-6 py-5 -z-20 "
+              className=" bg-black absolute left-0 md:top-18 top-16 w-full md:px-12 px-6 py-5 -z-20 "
             >
               <b className=" md:text-5xl text-3xl text-white font-patung ">
                 Tanvir Rahman
