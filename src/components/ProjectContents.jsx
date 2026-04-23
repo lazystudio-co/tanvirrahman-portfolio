@@ -13,14 +13,18 @@ const ProjectContents = () => {
     const video = videoRefs.current[index];
     if (!video) return;
 
-    video.muted = false;
-
-    if (video.paused) {
-      video.play();
-      setPlayingIndex(index);
-    } else {
-      video.pause();
+    if (playingIndex === index) {
+      // Clicking the active video → mute it, deactivate
+      video.muted = true;
       setPlayingIndex(null);
+    } else {
+      // Mute all other videos
+      videoRefs.current.forEach((v, i) => {
+        if (v && i !== index) v.muted = true;
+      });
+      // Unmute the clicked one
+      video.muted = false;
+      setPlayingIndex(index);
     }
   };
 
@@ -79,6 +83,8 @@ const ProjectContents = () => {
               >
                 <video
                   playsInline
+                  autoPlay
+                  muted
                   loading="lazy"
                   ref={(el) => (videoRefs.current[i] = el)}
                   loop
@@ -137,6 +143,8 @@ const ProjectContents = () => {
               >
                 <video
                   playsInline
+                  autoPlay
+                  muted
                   loading="lazy"
                   ref={(el) => (videoRefs.current[globalIndex] = el)}
                   loop
