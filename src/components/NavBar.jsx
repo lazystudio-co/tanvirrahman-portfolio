@@ -42,15 +42,9 @@ const NavBar = () => {
     setToogleMenu((prev) => !prev);
   };
 
-
-
   // parahraph letter animate
 
-  
   // parahraph letter animate
-
-
-
 
   return (
     <nav id="#" className=" bg-black z-50 relative">
@@ -59,13 +53,11 @@ const NavBar = () => {
       2xl:py-6 xl:py-6 lg:py-6 py-4 "
       >
         <motion.a
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           transition={{
             duration: 0.7,
-            delay: 0.2,
-            stiffness: 70,
-            type: "tween",
+            delay: 0.4,
           }}
           viewport={{ once: true, amount: 0.3 }}
           href="/"
@@ -80,13 +72,11 @@ const NavBar = () => {
         </motion.a>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           transition={{
             duration: 0.7,
-            delay: 0.2,
-            stiffness: 70,
-            type: "tween",
+            delay: 0.4,
           }}
           viewport={{ once: true, amount: 0.3 }}
           className=" flex justify-center items-center 2xl:gap-8 xl:gap-8 lg:gap-8 md:gap-6 gap-4 "
@@ -135,7 +125,7 @@ const NavBar = () => {
               <List className="flex justify-start items-start gap-6 mt-5 ">
                 {linkPath.map((link) => (
                   <ListItems
-                    className=" md:text-2xl! text-md! text-black! bg-white md:px-5 px-3 md:py-2 py-1 rounded-md "
+                    className=" md:text-2xl! text-sm! text-black! bg-white md:px-5 px-3 md:py-2 py-1 rounded-full "
                     key={link.path}
                     PagePath={link.path}
                     activeBg={link.bg}
