@@ -437,6 +437,7 @@ const Admin = () => {
                 <video
                   src={item.videoUrl}
                   controls
+                  playsInline
                   preload="metadata"
                   className=" relative w-full aspect-video object-cover rounded-md "
                 />
@@ -464,6 +465,7 @@ const Admin = () => {
                 <video
                   src={item.videoUrl}
                   controls
+                  playsInline
                   preload="metadata"
                   className=" relative w-full aspect-[9/16] object-cover rounded-md "
                 />
@@ -491,6 +493,7 @@ const Admin = () => {
                 <video
                   src={item.videoUrl}
                   controls
+                  playsInline
                   preload="metadata"
                   className=" relative w-full aspect-video object-cover rounded-md "
                 />
