@@ -3,6 +3,7 @@ import Container from "../components/Container";
 import { useNavigate } from "react-router-dom";
 import { ScrollSmoother } from "gsap/all";
 import { easeOut, motion } from "framer-motion";
+import BannerVideo from "../components/BannerVideo";
 
 const Landing = ({ id }) => {
   const paragraph =
@@ -137,11 +138,7 @@ const Landing = ({ id }) => {
           viewport={{ once: true }}
           className=" mb-25 "
         >
-          <img
-            loading="eager"
-            src="images/heroimage.jpg"
-            className=" rounded-[20px] select-none "
-          />
+          <BannerVideo />
         </motion.div>
       </Container>
     </section>

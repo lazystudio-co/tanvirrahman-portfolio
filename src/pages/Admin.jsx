@@ -15,6 +15,9 @@ const Admin = () => {
   const [loadingSec, setLoadingSec] = useState(false);
   const [error, setError] = useState("");
   const [authChecking, setAuthChecking] = useState(true);
+  const [banner, setBanner] = useState(null);
+  const [bannerUrl, setBannerUrl] = useState("");
+  const [loadingBanner, setLoadingBanner] = useState(false);
 
   // Auth guard
   const navigate = useNavigate();
@@ -136,6 +139,60 @@ const Admin = () => {
     }
   };
 
+  const handleUploadBanner = async () => {
+    if (!banner) return;
+
+    setLoadingBanner(true);
+    setError("");
+
+    try {
+      // Step 1: Try to write a placeholder to Firebase first
+      const firebaseRef = ref(db, "banners");
+      const newEntry = await push(firebaseRef, {
+        videoUrl: "pending",
+        createdAt: Date.now(),
+      });
+
+      if (newEntry) {
+        // Step 2: Firebase succeeded — now upload to Cloudinary
+        const formData = new FormData();
+        formData.append("file", banner);
+        formData.append("upload_preset", "tanvirRahman");
+
+        const res = await axios.post(
+          "https://api.cloudinary.com/v1_1/dnm3tmkca/video/upload",
+          formData,
+        );
+
+        const optimizedUrl = res.data.secure_url.replace(
+          "/upload/",
+          "/upload/q_auto,f_auto/",
+        );
+
+        // Step 3: Update the Firebase entry with the real Cloudinary URL
+        const { set } = await import("firebase/database");
+        await set(newEntry, {
+          videoUrl: optimizedUrl,
+          publicId: res.data.public_id,
+          createdAt: Date.now(),
+        });
+
+        setBannerUrl(optimizedUrl);
+      } else {
+        // Firebase push returned nothing — skip Cloudinary upload
+        setError("Firebase is not responding. Video upload skipped.");
+      }
+    } catch (err) {
+      console.error(err);
+      setError(
+        "Upload failed. Firebase could not be reached. Please try again.",
+      );
+    } finally {
+      setLoadingBanner(false);
+      setBanner(null);
+    }
+  };
+
   const handleDelete = async (id, publicId) => {
     try {
       // Step 1: Delete from Firebase
@@ -207,8 +264,44 @@ const Admin = () => {
     }
   };
 
+  const handleDeleteBanner = async (id, publicId) => {
+    try {
+      // Step 1: Delete from Firebase banners path
+      await remove(ref(db, `banners/${id}`));
+
+      // Step 2: Delete from Cloudinary
+      const apiKey = import.meta.env.VITE_CLOUDINARY_API_KEY;
+      const apiSecret = import.meta.env.VITE_CLOUDINARY_API_SECRET;
+      const timestamp = Math.round(Date.now() / 1000);
+
+      const signatureString = `public_id=${publicId}&timestamp=${timestamp}${apiSecret}`;
+      const encoder = new TextEncoder();
+      const hashBuffer = await crypto.subtle.digest(
+        "SHA-1",
+        encoder.encode(signatureString),
+      );
+      const signature = Array.from(new Uint8Array(hashBuffer))
+        .map((b) => b.toString(16).padStart(2, "0"))
+        .join("");
+
+      const formData = new FormData();
+      formData.append("public_id", publicId);
+      formData.append("signature", signature);
+      formData.append("api_key", apiKey);
+      formData.append("timestamp", timestamp);
+
+      await axios.post(
+        "https://api.cloudinary.com/v1_1/dnm3tmkca/video/destroy",
+        formData,
+      );
+    } catch (err) {
+      console.error("Banner delete failed:", err);
+    }
+  };
+
   const [videos, setVideos] = useState([]);
   const [reels, setReels] = useState([]);
+  const [banners, setBanners] = useState([]);
 
   useEffect(() => {
     const videosRef = ref(db, "videos");
@@ -238,11 +331,29 @@ const Admin = () => {
         setReels([]);
       }
     });
+
+    const bannersRef = ref(db, "banners");
+    onValue(bannersRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const bannerList = Object.entries(data).map(([key, value]) => ({
+          id: key,
+          ...value,
+        }));
+        setBanners(bannerList);
+      } else {
+        setBanners([]);
+      }
+    });
   }, []);
+
+  // banner
+  
 
   return (
     <section className=" pb-40 ">
-      <div className=" pt-20 grid grid-cols-2 ">
+      <div className=" pt-20 grid grid-cols-3 ">
+        {/* video */}
         <div className=" mx-auto flex flex-col gap-6 ">
           <h2 className=" font-anton text-3xl text-white mb-10 mx-auto ">
             Video
@@ -265,7 +376,9 @@ const Admin = () => {
 
           {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
         </div>
+        {/* video */}
 
+        {/* reel */}
         <div className=" mx-auto flex flex-col gap-6 ">
           <h2 className=" font-anton text-3xl text-white mb-10 mx-auto ">
             Reels
@@ -285,6 +398,32 @@ const Admin = () => {
             {loadingSec ? "Uploading..." : "Upload "}
           </button>
         </div>
+        {/* reel */}
+
+        {/* banner */}
+        <div className=" mx-auto flex flex-col gap-6 ">
+          <h2 className=" font-anton text-3xl text-white mb-10 mx-auto ">
+            Banner
+          </h2>
+          <input
+            type="file"
+            required
+            accept="video/*"
+            onChange={(e) => setBanner(e.target.files[0])}
+            className=" bg-white/50 text-white pl-5 py-2 rounded-md "
+          />
+
+          <button
+            onClick={handleUploadBanner}
+            disabled={loadingBanner}
+            className=" bg-white px-4 py-1 rounded-full text-[16px] font-satoshi select-none cursor-pointer "
+          >
+            {loadingBanner ? "Uploading..." : "Upload "}
+          </button>
+
+          {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
+        </div>
+        {/* banner */}
       </div>
       {/* Videos Preview */}
       <Container className=" mt-20 ">
@@ -334,6 +473,35 @@ const Admin = () => {
                 />
                 <button
                   onClick={() => handleDeleteReel(item.id, item.publicId)}
+                  className=" text-red-500 text-md font-satoshi bg-white w-[50%] absolute left-[50%] translate-x-[-50%] -bottom-5 rounded-full z-50 select-none cursor-pointer "
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Container>
+
+      {/* Banners Preview */}
+      <Container className=" mt-20 ">
+        <h3 className=" text-white font-anton text-4xl mb-10 ">
+          Banners Preview
+        </h3>
+        <div className=" grid grid-cols-4 gap-6 ">
+          {banners.map((item) => (
+            <div key={item.id} style={{ marginTop: "20px" }}>
+              <div className=" w-fit mb-5 relative ">
+                <video
+                  src={item.videoUrl}
+                  controls
+                  width="400"
+                  height="200"
+                  preload="metadata"
+                  className=" relative "
+                />
+                <button
+                  onClick={() => handleDeleteBanner(item.id, item.publicId)}
                   className=" text-red-500 text-md font-satoshi bg-white w-[50%] absolute left-[50%] translate-x-[-50%] -bottom-5 rounded-full z-50 select-none cursor-pointer "
                 >
                   Delete
