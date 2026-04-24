@@ -16,6 +16,7 @@ const BannerVideo = () => {
         videoRef.current.muted = false;
         videoRef.current.play().catch(() => {});
         setIsPlayingWithSound(true);
+        setVideoLoaded(true);
       } else {
         videoRef.current.muted = true;
         setIsPlayingWithSound(false);
@@ -73,6 +74,8 @@ const BannerVideo = () => {
         loop
         playsInline
         preload="auto"
+        onCanPlay={() => setVideoLoaded(true)}
+        onPlaying={() => setVideoLoaded(true)}
         onLoadedData={() => setVideoLoaded(true)}
         className={`w-full h-full object-cover transition-all duration-500 ${
           isPlayingWithSound ? "grayscale-0" : "grayscale"
@@ -83,9 +86,7 @@ const BannerVideo = () => {
       <div
         onClick={handlePlayClick}
         className={`absolute inset-0 flex items-center justify-center cursor-pointer transition-all duration-300 z-20 ${
-          isPlayingWithSound
-            ? "bg-transparent"
-            : "bg-black/25 "
+          isPlayingWithSound ? "bg-transparent" : "bg-black/25 "
         }`}
       >
         {!isPlayingWithSound && (
