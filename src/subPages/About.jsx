@@ -2,6 +2,7 @@ import React from "react";
 import List from "../components/List";
 import ListItems from "../components/ListItems";
 import Container from "../components/Container";
+import { easeIn, easeInOut, easeOut, motion } from "framer-motion";
 
 const About = ({ id }) => {
   return (
@@ -11,34 +12,60 @@ const About = ({ id }) => {
     >
       <Container>
         <div className=" relative">
-          <h2 className=" font-anton text-white text-[22px] sm:text-[28px] md:text-[34px] lg:text-[40px] w-full lg:w-[70%] leading-tight ">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: easeOut }}
+            viewport={{ once: true, amount: 0.3 }}
+            className=" font-anton text-white text-[22px] sm:text-[28px] md:text-[34px] lg:text-[40px] w-full lg:w-[70%] leading-tight "
+          >
             Transforming raw footage into powerful visual narratives through
             creative vision, refined editing, and cinematic precision that not
             only captures attention but leaves a lasting and meaningful impact,
             helping brands and creators stand out in a crowded digital world
             while delivering stories that resonate, inspire, and truly connect
             with their audience.
-          </h2>
-          <p className=" text-[70px] sm:text-[90px] md:text-[130px] lg:text-[180px] text-redd font-patung absolute left-2 -bottom-12 sm:-bottom-14 md:-bottom-20 lg:-bottom-30 italic ">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.7, ease: easeOut }}
+            viewport={{ once: true, amount: 0.2 }}
+            className=" text-[70px] sm:text-[90px] md:text-[130px] lg:text-[180px] text-redd font-patung absolute left-2 -bottom-12 sm:-bottom-14 md:-bottom-20 lg:-bottom-30 italic "
+          >
             about me
-          </p>
+          </motion.p>
         </div>
 
         <div className=" flex flex-col lg:flex-row justify-between items-start 2xl:mt-20 xl:mt-20 lg:mt-20 md:mt-12 mt-8 2xl:gap-12 lg:gap-16 md:gap-5 sm:gap-10 gap-4 ">
           <div className=" select-text selection:bg-white selection:text-black ">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: easeInOut }}
+              viewport={{ once: true, viewport: 0.3 }}
+            >
               <b className=" font-patung font-bold text-[32px] text-white tracking-wide w-fit ">
                 Contacts
               </b>
               <p className=" text-[16px] text-white font-satoshi 2xl:mt-5 xl:mt-5 lg:mt-5 md:mt-5 mt-2 select-text!  ">
                 +880 1735 035182
               </p>
-              <p className=" text-[16px] text-white font-satoshi mt-1 select-text!  ">
+              <a 
+                href="mailto:tanvirrahman2111@gmail.com" 
+                className=" text-[16px] text-white font-satoshi mt-1 select-text! block hover:text-red-600 transition-colors cursor-pointer underline "
+              >
                 tanvirrahman2111@gmail.com
-              </p>
-            </div>
+              </a>
+            </motion.div>
 
-            <div className=" 2xl:mt-15 xl:mt-15 lg:mt-15 mt-10 ">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.4, ease: easeInOut }}
+              viewport={{ once: true, viewport: 0.3 }}
+              className=" 2xl:mt-15 xl:mt-15 lg:mt-15 mt-10 "
+            >
               <b className=" font-patung font-bold text-[32px] text-white tracking-wide w-fit  ">
                 Tools
               </b>
@@ -53,9 +80,15 @@ const About = ({ id }) => {
                   <img src="icons/office.png" className=" w-15 " />
                 </li>
               </ul>
-            </div>
+            </motion.div>
 
-            <div className=" 2xl:mt-15 xl:mt-15 lg:mt-15 mt-10 flex flex-col gap-1 mb-5 ">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.6, ease: easeInOut }}
+              viewport={{ once: true, viewport: 0.3 }}
+              className=" 2xl:mt-15 xl:mt-15 lg:mt-15 mt-10 flex flex-col gap-1 mb-5 "
+            >
               <b className=" font-patung font-bold text-[32px] text-white tracking-wide w-fit  ">
                 CV
               </b>
@@ -67,54 +100,105 @@ const About = ({ id }) => {
               >
                 Download
               </a>
-            </div>
+            </motion.div>
           </div>
 
           <div className=" flex flex-col md:flex-row justify-center items-start gap-8 md:gap-12.5 ">
             <div>
-              <p className=" font-satoshi w-full md:w-88.75 text-[16px] text-white ">
+              <motion.p
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2, ease: easeInOut }}
+                viewport={{ once: true, viewport: 0.3 }}
+                className=" font-satoshi w-full md:w-88.75 text-[16px] text-white "
+              >
                 I am Tanvir — a creative video editor dedicated to turning raw
                 footage into powerful visual stories. I blend creativity,
                 timing, and emotion to craft edits that connect, engage, and
                 inspire.
-              </p>
-              <img
+              </motion.p>
+              <motion.img
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.6, ease: easeInOut }}
+                viewport={{ once: true, viewport: 0.3 }}
                 src="images/profile.jpeg"
                 alt=""
                 className=" w-full md:w-85 mt-10 rounded-[20px] "
               />
             </div>
-            <List className=" flex flex-col justify-start items-start 2xl:gap-0 xl:gap-0 lg:gap-1 md:gap-1 gap-0 ">
-              <ListItems className=" text-[16px] flex justify-center items-center gap-2 2xl:py-6 xl:py-6 lg:py-6 md:py-6 py-1 ">
+            <ul className=" flex flex-col justify-start items-start 2xl:gap-7 xl:gap-0 lg:gap-1 md:gap-1 gap-0 ">
+              <motion.li
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.2, ease: easeIn }}
+                viewport={{ once: true, amount: 0.3 }}
+                className=" text-[16px] text-white flex justify-center items-center gap-2 2xl:py-6 xl:py-6 lg:py-6 md:py-6 py-1 "
+              >
                 <img src="images/homeVec.png" /> Crafting Stories Through
                 Editing
-              </ListItems>
-              <ListItems className=" text-[16px] flex justify-center items-center gap-2 2xl:py-6 xl:py-6 lg:py-6 md:py-6 py-1 ">
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.4, ease: easeIn }}
+                viewport={{ once: true, amount: 0.3 }}
+                className=" text-[16px] text-white flex justify-center items-center gap-2 2xl:py-6 xl:py-6 lg:py-6 md:py-6 py-1 "
+              >
                 <img src="images/aboutVec.png" /> Turning Clips Into Cinematic
                 Stories
-              </ListItems>
-              <ListItems className=" text-[16px] flex justify-center items-center gap-2 2xl:py-6 xl:py-6 lg:py-6 md:py-6 py-1 ">
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.6, ease: easeIn }}
+                viewport={{ once: true, amount: 0.3 }}
+                className=" text-[16px] text-white flex justify-center items-center gap-2 2xl:py-6 xl:py-6 lg:py-6 md:py-6 py-1 "
+              >
                 <img src="images/projectVec.png" /> Editing Vision Into Reality
-              </ListItems>
-              <ListItems className=" text-[16px] flex justify-center items-center gap-2 2xl:py-6 xl:py-6 lg:py-6 md:py-6 py-1 ">
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.8, ease: easeIn }}
+                viewport={{ once: true, amount: 0.3 }}
+                className=" text-[16px] text-white flex justify-center items-center gap-2 2xl:py-6 xl:py-6 lg:py-6 md:py-6 py-1 "
+              >
                 <img src="images/blogVec.png" /> Creating Impactful Visual
                 Experiences
-              </ListItems>
-              <ListItems className=" text-[16px] flex justify-center items-center gap-2 2xl:py-6 xl:py-6 lg:py-6 md:py-6 py-1 ">
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 1, ease: easeIn }}
+                viewport={{ once: true, amount: 0.3 }}
+                className=" text-[16px] text-white flex justify-center items-center gap-2 2xl:py-6 xl:py-6 lg:py-6 md:py-6 py-1 "
+              >
                 <img src="images/homeVec.png" className=" rotate-180 " />
                 Shaping Moments With Precision
-              </ListItems>
-            </List>
+              </motion.li>
+            </ul>
           </div>
         </div>
 
         <div className=" mt-20 ">
-          <h2 className=" text-white font-anton text-[56px] uppercase ">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: easeOut }}
+            viewport={{ once: true, amount: 0.3 }}
+            className=" text-white font-anton text-[56px] uppercase "
+          >
             SKills
-          </h2>
+          </motion.h2>
 
           <div className=" mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 ">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4, ease: easeOut }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
               <h3 className=" font-satoshi text-redd text-[20px] font-bold mb-4 ">
                 Video Editing Skills
               </h3>
@@ -127,9 +211,14 @@ const About = ({ id }) => {
                 <li>Short-form Content Editing (Reels, TikTok, Shorts)</li>
                 <li>YouTube Video Editing</li>
               </ul>
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6, ease: easeOut }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
               <h3 className=" font-satoshi text-redd text-[20px] font-bold mb-4 ">
                 Tools
               </h3>
@@ -139,9 +228,14 @@ const About = ({ id }) => {
                 <li>Adobe Media Encoder</li>
                 <li>Microsoft Office — Content Planning &amp; Documentation</li>
               </ul>
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.8, ease: easeOut }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
               <h3 className=" font-satoshi text-redd text-[20px] font-bold mb-4 ">
                 Supporting Skills
               </h3>
@@ -154,9 +248,14 @@ const About = ({ id }) => {
                 <li>Time Management</li>
                 <li>Client Communication</li>
               </ul>
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.7, ease: easeOut }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
               <h3 className=" font-satoshi text-redd text-[20px] font-bold mb-4 ">
                 Platform-Specific
               </h3>
@@ -166,7 +265,7 @@ const About = ({ id }) => {
                 <li>TikTok Video Editing</li>
                 <li>Social Media Content Creation</li>
               </ul>
-            </div>
+            </motion.div>
           </div>
         </div>
       </Container>

@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
 import Container from "../components/Container";
+import { easeIn, easeOut, motion } from "framer-motion";
 
 const BLOG_POSTS = [
   {
@@ -75,20 +76,38 @@ export default function BlogSection({ id }) {
       <Container>
         <div className=" 2xl:mb-14 xl:mb-14 lg:mb-10 md:mb-18 mb-8 relative flex justify-between items-end">
           <div className="relative">
-            <h2 className="text-white text-[56px] font-anton uppercase">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: easeOut }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="text-white text-[56px] font-anton uppercase"
+            >
               Latest
-            </h2>
-            <span className="absolute left-8 top-4 text-redd font-patung text-[60px] -rotate-6 whitespace-nowrap">
+            </motion.h2>
+            <motion.span
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.4, ease: easeIn }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="absolute left-10 top-6 text-redd font-patung italic text-[50px] whitespace-nowrap"
+            >
               Insights
-            </span>
+            </motion.span>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: easeIn }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-8"
+        >
           {BLOG_POSTS.map((post) => (
             <BlogCard key={post.id} post={post} />
           ))}
-        </div>
+        </motion.div>
 
         <div className="mt-12 flex justify-center md:hidden">
           <button className="border border-neutral-800 text-white px-8 py-3 text-sm font-satoshi uppercase tracking-widest hover:bg-redd hover:border-redd transition-all">

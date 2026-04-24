@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -13,10 +14,11 @@ const firebaseConfig = {
   projectId: "tanvirrahman-fd91e",
   storageBucket: "tanvirrahman-fd91e.firebasestorage.app",
   messagingSenderId: "570173326568",
-  appId: "1:570173326568:web:c23fb74e16b2a037a2b55d",
+  appId: "1:570173326568:web:c23fb74e16b2a037a2b55d"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getDatabase(app);
 export const auth = getAuth(app);
+export const firestoreDB = getFirestore(app);

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { db } from "../../firebaseConfig";
 import { onValue, ref } from "firebase/database";
 import { Play } from "lucide-react";
+import { easeInOut, easeOut, motion } from "framer-motion";
 
 const ProjectContents = () => {
   const videoRefs = useRef([]);
@@ -61,17 +62,21 @@ const ProjectContents = () => {
     });
   }, []);
 
-
-
   return (
     <div className="mt-10 space-y-16">
       {/* ── Films & Ads ── */}
       <div>
         {/* Section label */}
         <div className="flex items-center gap-4 mb-8">
-          <span className="text-white/50 font-satoshi text-xs tracking-[0.35em] uppercase shrink-0">
+          <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: easeInOut }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="text-white/50 font-satoshi text-xs tracking-[0.35em] uppercase shrink-0"
+          >
             Films &amp; Ads
-          </span>
+          </motion.span>
           <div className="flex-1 h-px bg-white/10" />
         </div>
 
@@ -82,10 +87,14 @@ const ProjectContents = () => {
             return (
               <div
                 key={video.id}
-                className="relative group overflow-hidden cursor-pointer bg-[#111] aspect-video rounded-sm"
+                className="relative group overflow-hidden cursor-pointer bg-[#111] aspect-video rounded-sm "
                 onClick={() => handleClick(i)}
               >
-                <video
+                <motion.video
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.2, ease: easeInOut }}
+                  viewport={{ once: true, amount: 0.3 }}
                   playsInline
                   preload="metadata"
                   loading="lazy"
@@ -130,9 +139,15 @@ const ProjectContents = () => {
       <div>
         {/* Section label */}
         <div className="flex items-center gap-4 mb-8">
-          <span className="text-white/50 font-satoshi text-xs tracking-[0.35em] uppercase shrink-0">
+          <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.4, ease: easeInOut }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="text-white/50 font-satoshi text-xs tracking-[0.35em] uppercase shrink-0"
+          >
             Reels
-          </span>
+          </motion.span>
           <div className="flex-1 h-px bg-white/10" />
         </div>
 
@@ -147,7 +162,11 @@ const ProjectContents = () => {
                 className="relative group overflow-hidden cursor-pointer bg-[#111] aspect-[9/16] rounded-sm"
                 onClick={() => handleClick(globalIndex)}
               >
-                <video
+                <motion.video
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, ease: easeOut }}
+                  viewport={{ once: true, amount: 0.3 }}
                   playsInline
                   preload="metadata"
                   loading="lazy"
