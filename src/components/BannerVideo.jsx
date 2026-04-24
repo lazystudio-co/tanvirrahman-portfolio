@@ -6,20 +6,15 @@ import { Play } from "lucide-react";
 const BannerVideo = () => {
   const [bannerUrl, setBannerUrl] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  const [isPlayingWithSound, setIsPlayingWithSound] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
 
   const handlePlayClick = () => {
     if (videoRef.current) {
-      if (!isPlayingWithSound) {
-        videoRef.current.muted = false;
-        videoRef.current.play().catch(() => {});
-        setIsPlayingWithSound(true);
-        setVideoLoaded(true);
+      if (isPlaying) {
+        videoRef.current.pause();
       } else {
-        videoRef.current.muted = true;
-        setIsPlayingWithSound(false);
+        videoRef.current.play().catch(() => {});
       }
     }
   };
@@ -59,47 +54,30 @@ const BannerVideo = () => {
   }
 
   return (
-    <div className="relative w-full aspect-video rounded-[20px] overflow-hidden group">
-      <img
-        loading="eager"
-        src={bannerUrl.replace(/\.[^/.]+$/, ".jpg")}
-        className={`absolute inset-0 w-full h-full object-cover z-10 transition-all duration-1000 ease-in-out ${
-          videoLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
-        } ${isPlayingWithSound ? "grayscale-0" : "grayscale"}`}
-        alt="Video thumbnail"
-      />
+    <div className="relative w-full aspect-video rounded-[20px] overflow-hidden">
       <video
         ref={videoRef}
         src={bannerUrl}
+        poster={bannerUrl.replace(/\.[^/.]+$/, ".jpg")}
         loop
         playsInline
-        preload="auto"
-        onCanPlay={() => setVideoLoaded(true)}
-        onPlaying={() => setVideoLoaded(true)}
-        onLoadedData={() => setVideoLoaded(true)}
-        className={`w-full h-full object-cover transition-all duration-500 ${
-          isPlayingWithSound ? "grayscale-0" : "grayscale"
-        }`}
+        preload="metadata"
+        className="w-full h-full object-cover cursor-pointer"
+        onClick={handlePlayClick}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
       />
 
-      {/* Dark overlay + play button */}
-      <div
-        onClick={handlePlayClick}
-        className={`absolute inset-0 flex items-center justify-center cursor-pointer transition-all duration-300 z-20 ${
-          isPlayingWithSound ? "bg-transparent" : "bg-black/25 "
-        }`}
-      >
-        {!isPlayingWithSound && (
-          <div
-            className="w-15 h-15 rounded-full bg-white/10 backdrop-blur-sm border border-white/30
-              flex items-center justify-center
-              opacity-100 scale-100
-              transition-all duration-300"
-          >
-            <Play size={32} className="text-white " fill="white" />
+      {!isPlaying && (
+        <div
+          onClick={handlePlayClick}
+          className="absolute inset-0 flex items-center justify-center cursor-pointer bg-black/25"
+        >
+          <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
+            <Play size={32} className="text-white ml-1" fill="white" />
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
