@@ -90,12 +90,12 @@ const BannerVideo = () => {
       >
         {!isPlayingWithSound && (
           <div
-            className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm border border-white/30
+            className="w-15 h-15 rounded-full bg-white/10 backdrop-blur-sm border border-white/30
               flex items-center justify-center
               opacity-100 scale-100
               transition-all duration-300"
           >
-            <Play size={32} className="text-white ml-2" fill="white" />
+            <Play size={32} className="text-white " fill="white" />
           </div>
         )}
       </div>
