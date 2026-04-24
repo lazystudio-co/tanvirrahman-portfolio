@@ -103,11 +103,11 @@ const About = ({ id }) => {
             </motion.div>
           </div>
 
-          <div className=" flex flex-col md:flex-row justify-center items-start gap-8 md:gap-12.5 ">
+          <div className=" flex flex-col md:flex-row justify-start items-start gap-8 md:gap-12.5 ">
             <div>
               <motion.p
                 initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: easeInOut }}
                 viewport={{ once: true, viewport: 0.3 }}
                 className=" font-satoshi w-full md:w-88.75 text-[16px] text-white "
@@ -119,7 +119,7 @@ const About = ({ id }) => {
               </motion.p>
               <motion.img
                 initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7, delay: 0.6, ease: easeInOut }}
                 viewport={{ once: true, viewport: 0.3 }}
                 src="images/profile.jpeg"
