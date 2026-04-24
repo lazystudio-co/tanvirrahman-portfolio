@@ -88,7 +88,7 @@ export default function BlogSection({ id }) {
             <motion.span
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.4, ease: easeIn }}
+              transition={{ duration: 0.7, delay: 0.4, ease: easeIn }}
               viewport={{ once: true, amount: 0.2 }}
               className="absolute left-10 top-6 text-redd font-patung italic text-[50px] whitespace-nowrap"
             >

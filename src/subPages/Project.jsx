@@ -21,7 +21,7 @@ const Project = ({ id }) => {
           <motion.p
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.4, ease: easeIn }}
+            transition={{ duration: 0.7, delay: 0.4, ease: easeIn }}
             viewport={{ once: true, amount: 0.2 }}
             className=" text-[60px] font-patung text-redd absolute -right-4 -bottom-6 capitalize tracking-tighter italic "
           >

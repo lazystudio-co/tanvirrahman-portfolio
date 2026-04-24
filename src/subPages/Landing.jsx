@@ -41,8 +41,8 @@ const Landing = ({ id }) => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{
-                duration: 1,
-                delay: 0.7,
+                duration: 0.7,
+                delay: 0.4,
               }}
               viewport={{ once: true, amount: 0.3 }}
               className=" text-[42px] sm:text-[44px] md:text-[70px] lg:text-[90px] xl:text-[120px] 2xl:text-[140px] text-redd font-patung absolute right-0 -bottom-10 sm:-bottom-5 md:-bottom-14 lg:-bottom-8 xl:-bottom-8 xl:right-63 italic capitalize "
