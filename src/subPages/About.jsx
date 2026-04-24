@@ -29,7 +29,7 @@ const About = ({ id }) => {
           <motion.p
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.7, ease: easeOut }}
+            transition={{ duration: 1, delay: 0.4, ease: easeOut }}
             viewport={{ once: true, amount: 0.2 }}
             className=" text-[70px] sm:text-[90px] md:text-[130px] lg:text-[180px] text-redd font-patung absolute left-2 -bottom-12 sm:-bottom-14 md:-bottom-20 lg:-bottom-30 italic "
           >

@@ -168,7 +168,7 @@ export default function Contact({ id }) {
                       className="w-full bg-[#111] border border-white/5 rounded-lg px-9 py-4 focus:outline-none focus:border-red-600 transition-all text-gray-200 font-satoshi placeholder:text-white/50 placeholder:font-satoshi"
                       onChange={handleChange}
                     />
-                    <span className="text-white/50 absolute top-[50%] translate-y-[-50%] left-6 text-xl">
+                    <span className="text-white/50 absolute top-[50%] translate-y-[-50%] left-6 text-lg">
                       $
                     </span>
                   </div>
