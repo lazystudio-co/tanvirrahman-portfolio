@@ -51,8 +51,8 @@ const About = ({ id }) => {
               <p className=" text-[16px] text-white font-satoshi 2xl:mt-5 xl:mt-5 lg:mt-5 md:mt-5 mt-2 select-text!  ">
                 +880 1735 035182
               </p>
-              <a 
-                href="mailto:tanvirrahman2111@gmail.com?subject=Hi%2C%20I%20came%20across%20your%20work%20and%20I%27m%20interested%20in%20your%20video%20editing%20services.%20Could%20you%20share%20your%20packages%2C%20pricing%2C%20and%20turnaround%20time%3F%20I%27d%20love%20to%20discuss%20a%20potential%20project." 
+              <a
+                href="mailto:tanvirrahman2111@gmail.com?subject=Project%20Inquiry%20-%20Video%20Editing%20Services"
                 className=" text-[16px] text-white font-satoshi mt-1 select-text! block hover:text-red-600 transition-colors cursor-pointer underline "
               >
                 tanvirrahman2111@gmail.com
