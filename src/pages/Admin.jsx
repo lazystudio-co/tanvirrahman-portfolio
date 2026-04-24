@@ -351,10 +351,10 @@ const Admin = () => {
   
 
   return (
-    <section className=" pb-40 ">
-      <div className=" pt-20 grid grid-cols-3 ">
+    <section className=" pb-40 px-4 md:px-8 ">
+      <div className=" pt-20 grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-6 max-w-7xl mx-auto ">
         {/* video */}
-        <div className=" mx-auto flex flex-col gap-6 ">
+        <div className=" w-full max-w-sm mx-auto flex flex-col gap-6 ">
           <h2 className=" font-anton text-3xl text-white mb-10 mx-auto ">
             Video
           </h2>
@@ -379,7 +379,7 @@ const Admin = () => {
         {/* video */}
 
         {/* reel */}
-        <div className=" mx-auto flex flex-col gap-6 ">
+        <div className=" w-full max-w-sm mx-auto flex flex-col gap-6 ">
           <h2 className=" font-anton text-3xl text-white mb-10 mx-auto ">
             Reels
           </h2>
@@ -401,7 +401,7 @@ const Admin = () => {
         {/* reel */}
 
         {/* banner */}
-        <div className=" mx-auto flex flex-col gap-6 ">
+        <div className=" w-full max-w-sm mx-auto flex flex-col gap-6 ">
           <h2 className=" font-anton text-3xl text-white mb-10 mx-auto ">
             Banner
           </h2>
@@ -430,17 +430,15 @@ const Admin = () => {
         <h3 className=" text-white font-anton text-4xl mb-10 ">
           Videos Preview
         </h3>
-        <div className=" grid grid-cols-4 gap-6 ">
+        <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ">
           {videos.map((item) => (
             <div key={item.id} style={{ marginTop: "20px" }}>
-              <div className=" w-fit mb-5 relative ">
+              <div className=" w-full mb-5 relative ">
                 <video
                   src={item.videoUrl}
                   controls
-                  width="400"
-                  height="200"
                   preload="metadata"
-                  className=" relative "
+                  className=" relative w-full aspect-video object-cover rounded-md "
                 />
                 <button
                   onClick={() => handleDelete(item.id, item.publicId)}
@@ -459,17 +457,15 @@ const Admin = () => {
         <h3 className=" text-white font-anton text-4xl mb-10 ">
           Reels Preview
         </h3>
-        <div className=" grid grid-cols-5 gap-6 ">
+        <div className=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 ">
           {reels.map((item) => (
             <div key={item.id} style={{ marginTop: "20px" }}>
-              <div className=" w-fit mb-5 relative ">
+              <div className=" w-full mb-5 relative ">
                 <video
                   src={item.videoUrl}
                   controls
-                  width="400"
-                  height="200"
                   preload="metadata"
-                  className=" relative "
+                  className=" relative w-full aspect-[9/16] object-cover rounded-md "
                 />
                 <button
                   onClick={() => handleDeleteReel(item.id, item.publicId)}
@@ -488,17 +484,15 @@ const Admin = () => {
         <h3 className=" text-white font-anton text-4xl mb-10 ">
           Banners Preview
         </h3>
-        <div className=" grid grid-cols-4 gap-6 ">
+        <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ">
           {banners.map((item) => (
             <div key={item.id} style={{ marginTop: "20px" }}>
-              <div className=" w-fit mb-5 relative ">
+              <div className=" w-full mb-5 relative ">
                 <video
                   src={item.videoUrl}
                   controls
-                  width="400"
-                  height="200"
                   preload="metadata"
-                  className=" relative "
+                  className=" relative w-full aspect-video object-cover rounded-md "
                 />
                 <button
                   onClick={() => handleDeleteBanner(item.id, item.publicId)}
