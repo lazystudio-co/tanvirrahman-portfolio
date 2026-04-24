@@ -72,7 +72,7 @@ const ProjectContents = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.2, ease: easeInOut }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true }}
             className="text-white/50 font-satoshi text-xs tracking-[0.35em] uppercase shrink-0"
           >
             Films &amp; Ads
@@ -94,7 +94,7 @@ const ProjectContents = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.2, ease: easeInOut }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  viewport={{ once: true}}
                   playsInline
                   preload="metadata"
                   loading="lazy"
