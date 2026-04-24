@@ -118,7 +118,7 @@ const NavBar = () => {
                 ease: easeInOut,
                 damping: 15,
               }}
-              className=" bg-black absolute left-0 md:top-18 top-16 w-full md:px-12 px-6 py-5 -z-20 "
+              className=" bg-black absolute left-0 md:top-18 top-16 w-full md:px-12 px-6 py-6 -z-20 "
             >
               <b className=" md:text-5xl text-3xl text-white font-patung ">
                 Tanvir Rahman
@@ -126,7 +126,7 @@ const NavBar = () => {
               <List className="flex justify-start items-start gap-6 mt-5 ">
                 {linkPath.map((link) => (
                   <ListItems
-                    className=" md:text-2xl! text-sm! text-black! bg-white md:px-5 px-4 md:py-2 py-1 rounded-full "
+                    className=" md:text-2xl! text-sm! md:py-2 py-1 rounded-full "
                     key={link.path}
                     PagePath={link.path}
                     activeBg={link.bg}
