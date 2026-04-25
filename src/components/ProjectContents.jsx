@@ -25,9 +25,13 @@ const ProjectContents = () => {
           v.pause();
         }
       });
-      // Unmute and play the clicked one
-      video.muted = false;
-      video.play().catch(() => {});
+      // Play the clicked one
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.error("Video play error:", error);
+        });
+      }
       setPlayingIndex(index);
     }
   };
@@ -87,19 +91,18 @@ const ProjectContents = () => {
             return (
               <div
                 key={video.id}
-                className="relative group overflow-hidden cursor-pointer bg-[#111] aspect-video rounded-sm "
-                onClick={() => handleClick(i)}
+                className="relative group overflow-hidden bg-[#111] aspect-video rounded-sm "
               >
                 <motion.video
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.2, ease: easeInOut }}
-                  viewport={{ once: true}}
+                  viewport={{ once: true }}
                   playsInline
                   preload="metadata"
-                  loading="lazy"
                   ref={(el) => (videoRefs.current[i] = el)}
                   loop
+                  controls={isPlaying}
                   className={`w-full object-cover select-none transition-all duration-500 ${
                     isPlaying ? "grayscale-0" : "grayscale-100"
                   }`}
@@ -108,10 +111,11 @@ const ProjectContents = () => {
 
                 {/* Dark overlay + play button */}
                 <div
+                  onClick={() => handleClick(i)}
                   className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
                     isPlaying
-                      ? "bg-transparent"
-                      : "bg-black/25 group-hover:bg-black/10"
+                      ? "bg-transparent pointer-events-none"
+                      : "bg-black/25 group-hover:bg-black/10 cursor-pointer"
                   }`}
                 >
                   {!isPlaying && (
@@ -159,8 +163,7 @@ const ProjectContents = () => {
             return (
               <div
                 key={reel.id}
-                className="relative group overflow-hidden cursor-pointer bg-[#111] aspect-[9/16] rounded-sm"
-                onClick={() => handleClick(globalIndex)}
+                className="relative group overflow-hidden bg-[#111] aspect-[9/16] rounded-sm"
               >
                 <motion.video
                   initial={{ opacity: 0, y: 20 }}
@@ -168,10 +171,10 @@ const ProjectContents = () => {
                   transition={{ duration: 0.7, ease: easeOut }}
                   viewport={{ once: true, amount: 0.3 }}
                   playsInline
-                  preload="metadata"
-                  loading="lazy"
+                  preload="auto"
                   ref={(el) => (videoRefs.current[globalIndex] = el)}
                   loop
+                  controls={isPlaying}
                   className={`w-full h-full object-cover select-none transition-all duration-500 ${
                     isPlaying ? "grayscale-0" : "grayscale-100"
                   }`}
@@ -180,10 +183,11 @@ const ProjectContents = () => {
 
                 {/* Dark overlay + play button */}
                 <div
+                  onClick={() => handleClick(globalIndex)}
                   className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
                     isPlaying
-                      ? "bg-transparent"
-                      : "bg-black/25 group-hover:bg-black/10"
+                      ? "bg-transparent pointer-events-none"
+                      : "bg-black/25 group-hover:bg-black/10 cursor-pointer"
                   }`}
                 >
                   {!isPlaying && (

@@ -12,7 +12,7 @@ const BLOG_POSTS = [
     category: "Color Grading",
     date: "April 18, 2026",
     image:
-      "https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=2000&auto=format&fit=crop",
+      "images/colorGrading.jpg",
   },
   {
     id: 2,

@@ -206,9 +206,8 @@ const About = ({ id }) => {
                 <li>Cinematic Video Editing</li>
                 <li>Storytelling &amp; Narrative Building</li>
                 <li>Color Grading &amp; Color Correction</li>
-                <li>Motion Graphics &amp; Animation</li>
                 <li>Sound Design &amp; Audio Sync</li>
-                <li>Short-form Content Editing (Reels, TikTok, Shorts)</li>
+                <li>Short-form Content Editing (Reels, Shorts, Documentary, Short Films)</li>
                 <li>YouTube Video Editing</li>
               </ul>
             </motion.div>
@@ -262,7 +261,6 @@ const About = ({ id }) => {
               <ul className=" text-white font-satoshi space-y-2">
                 <li>YouTube Content Optimization</li>
                 <li>Instagram Reels Editing</li>
-                <li>TikTok Video Editing</li>
                 <li>Social Media Content Creation</li>
               </ul>
             </motion.div>
