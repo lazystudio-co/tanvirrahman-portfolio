@@ -61,11 +61,6 @@ const BlogCard = ({ post }) => {
           {post.excerpt}
         </p>
       </div>
-
-      <div className="flex items-center text-white font-satoshi text-sm uppercase tracking-widest mt-auto group-hover:text-redd transition-colors duration-300">
-        Read Article
-        <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" />
-      </div>
     </article>
   );
 };
@@ -109,11 +104,6 @@ export default function BlogSection({ id }) {
           ))}
         </motion.div>
 
-        <div className="mt-12 flex justify-center md:hidden">
-          <button className="border border-neutral-800 text-white px-8 py-3 text-sm font-satoshi uppercase tracking-widest hover:bg-redd hover:border-redd transition-all">
-            View All Posts
-          </button>
-        </div>
       </Container>
     </section>
   );
