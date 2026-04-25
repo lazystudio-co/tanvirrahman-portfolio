@@ -46,7 +46,7 @@ const BannerVideo = () => {
     return (
       <img
         loading="eager"
-        src="images/heroimage.jpg"
+        src="images/banner.png"
         className=" rounded-[20px] select-none w-full aspect-video object-cover "
         alt="Hero banner fallback"
       />

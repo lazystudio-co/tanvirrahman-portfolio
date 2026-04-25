@@ -100,7 +100,7 @@ const Footer = () => {
             {[FacebookIcon, InstagramIcon, TwitterIcon].map((Icon, i) => (
               <a
                 key={i}
-                href="#"
+                href=""
                 className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#0f0f0f] border border-white/5 hover:border-white/20 transition-all"
               >
                 <Icon size={18} className="text-gray-400 hover:text-white" />
