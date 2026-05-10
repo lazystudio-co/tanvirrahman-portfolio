@@ -58,8 +58,9 @@ const BannerVideo = () => {
       <video
         ref={videoRef}
         src={bannerUrl}
-        poster={bannerUrl.replace(/\.[^/.]+$/, ".jpg")}
+        poster="images/bannerSec.png"
         loop
+        muted
         playsInline
         preload="metadata"
         className="w-full h-full object-cover cursor-pointer"
