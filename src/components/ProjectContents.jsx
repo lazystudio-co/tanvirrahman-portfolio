@@ -99,7 +99,6 @@ const ProjectContents = () => {
                   transition={{ duration: 0.7, delay: 0.2, ease: easeInOut }}
                   viewport={{ once: true }}
                   playsInline
-                  muted
                   preload="metadata"
                   ref={(el) => (videoRefs.current[i] = el)}
                   loop
@@ -172,7 +171,6 @@ const ProjectContents = () => {
                   transition={{ duration: 0.7, ease: easeOut }}
                   viewport={{ once: true, amount: 0.3 }}
                   playsInline
-                  muted
                   preload="metadata"
                   ref={(el) => (videoRefs.current[globalIndex] = el)}
                   loop
