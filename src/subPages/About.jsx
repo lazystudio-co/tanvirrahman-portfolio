@@ -93,10 +93,10 @@ const About = ({ id }) => {
                 CV
               </b>
               <a
-                href="images/logo.png"
-                download="Tanvir Rahman (Visual Storyteller)"
+                href="cv/Md_TanvirRahmanNahid.pdf"
                 className="bg-white w-fit px-4 py-1 rounded-md text-[16px] text-black text-center font- font-bold 2xl:mt-5 xl:mt-5 lg:mt-5 md:mt-5 mt-2 select-none  "
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Download
               </a>
@@ -207,7 +207,10 @@ const About = ({ id }) => {
                 <li>Storytelling &amp; Narrative Building</li>
                 <li>Color Grading &amp; Color Correction</li>
                 <li>Sound Design &amp; Audio Sync</li>
-                <li>Short-form Content Editing (Reels, Shorts, Documentary, Short Films)</li>
+                <li>
+                  Short-form Content Editing (Reels, Shorts, Documentary, Short
+                  Films)
+                </li>
                 <li>YouTube Video Editing</li>
               </ul>
             </motion.div>
