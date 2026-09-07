@@ -41,11 +41,11 @@ const Footer = () => {
           <p className="text-white text-sm tracking-wide">
             Designed & Developed
             <a
-              href="#"
+              href="fahadiqbal.vercel.app"
               target="_blank"
               className=" underline font-bold ml-1  hover:text-redd duration-400 ease-in-out "
             >
-              LazyStudio
+              FahadIqbal
             </a>
           </p>
 

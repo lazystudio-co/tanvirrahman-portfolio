@@ -29,14 +29,13 @@ const Auth = () => {
   }, [navigate]);
 
   useEffect(() => {
-    if (authChecking) return; // Don't animate until auth is resolved
+    if (authChecking) return; 
     // Entrance animation
     gsap.fromTo(
       cardRef.current,
       { opacity: 0, y: 40, scale: 0.96 },
       { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: "power3.out" },
     );
-    // Slow spinning ring
     gsap.to(ringRef.current, {
       rotate: 360,
       duration: 10,
@@ -68,7 +67,6 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center relative overflow-hidden">
-      {/* Background blobs */}
       <div
         style={{
           position: "absolute",
